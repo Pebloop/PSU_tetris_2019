@@ -28,7 +28,6 @@ int main(int argc, char **argv)
         tetriminos = tetriminos->next;
         printf("\n\n");
     }
-
     destroy_tetriminos_list(tetriminos);
     return (0);
 }
