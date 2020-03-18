@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 SRC	=	src/get_tetriminos_list.c\
 		src/get_file_content.c\
 		src/initialize_tetrimino.c\
 		src/get_shape.c\
 		src/error_detection.c\
-		src/game/launch_game.c	\
-		src/init_config.c		\
+		src/game/launch_game.c\
+		src/init_config.c\
 
 
 MAIN =	main.c
