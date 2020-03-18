@@ -1,5 +1,6 @@
 SRC	=	src/parsing.c			\
 		src/game/launch_game.c	\
+		src/init_config.c		\
 
 MAIN =	main.c
 
@@ -7,7 +8,7 @@ OBJ	=	$(SRC:.c=.o)
 
 MAIN_OBJ = 	$(MAIN:.c=.o)
 
-CFLAGS = -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -lncurses -g3
+CFLAGS = -fdiagnostics-color -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -lncurses -g3
 
 NAME =	tetris
 

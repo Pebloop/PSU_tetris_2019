@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** navy
+** tetris
 ** File description:
 ** Main function
 */
@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
     config_t config = {0};
 
-    config.tetri_list = NULL;
+    init_config(&config);
     if (get_tetriminos_list(&(config.tetri_list)) == 84)
         return (84);
 

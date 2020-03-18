@@ -44,6 +44,9 @@ int create_tetrimino(tetrimino_t **tetriminos);
 void destroy_tetriminos_list(tetrimino_t *list);
 int get_next_nbr(char **str, char end);
 
+// init_config.c
+void init_config(config_t *config);
+
 //launch_game.c
 int launch_game(config_t config);
 
