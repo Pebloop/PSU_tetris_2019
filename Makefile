@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 SRC	=	src/get_tetriminos_list.c\
 		src/get_file_content.c\
 		src/initialize_tetrimino.c\
 		src/get_shape.c\
 		src/error_detection.c\
+		src/game/launch_game.c	\
+		src/init_config.c		\
+
 
 MAIN =	main.c
 
@@ -10,7 +14,7 @@ OBJ	=	$(SRC:.c=.o)
 
 MAIN_OBJ = 	$(MAIN:.c=.o)
 
-CFLAGS = -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -g3
+CFLAGS = -fdiagnostics-color -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -lncurses -g3
 
 NAME =	tetris
 

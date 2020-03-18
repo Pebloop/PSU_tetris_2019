@@ -24,6 +24,21 @@ typedef struct tetrimino {
     struct tetrimino *next;
 } tetrimino_t;
 
+typedef struct config {
+    tetrimino_t *tetri_list;
+    int level;
+    int map_width;
+    int map_height;
+    int hide_next;
+    int debug_mode;
+    int key_move_left;
+    int key_move_right;
+    int key_rotate;
+    int key_drop;
+    int key_quit;
+    int key_pause;
+} config_t;
+
 // get_tetriminos_list.c
 int get_tetriminos_list(tetrimino_t **tetriminos);
 int get_tetrimino(tetrimino_t **tetriminos, char *filename);
@@ -50,5 +65,11 @@ int is_wrong_filename(char *filename);
 int is_wrong_format(char *content);
 int my_is_int(char **str, char end);
 int check_shape(tetrimino_t *tetriminos, char *content);
+
+// init_config.c
+void init_config(config_t *config);
+
+//launch_game.c
+int launch_game(config_t config);
 
 #endif // DEF_TETRIS

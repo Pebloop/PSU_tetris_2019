@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** navy
+** tetris
 ** File description:
 ** Main function
 */
@@ -10,24 +10,26 @@
 
 int main(int argc, char **argv)
 {
-    tetrimino_t *tetriminos = NULL;
+    config_t config = {0};
 
-    if (get_tetriminos_list(&tetriminos) == 84)
+    init_config(&config);
+    if (get_tetriminos_list(&(config.tetri_list)) == 84)
         return (84);
 
-    while (tetriminos != NULL) {
-        printf("width : %i\n", tetriminos->width);
-        printf("height : %i\n", tetriminos->height);
-        printf("color : %i\n", tetriminos->color);
-        for (int i = 0; i < tetriminos->height; i++) {
-            for (int j = 0; j < tetriminos->width; j++) {
-                printf("%i", tetriminos->shape[i][j]);
+    while (config.tetri_list != NULL) {
+        printf("width : %i\n", config.tetri_list->width);
+        printf("height : %i\n", config.tetri_list->height);
+        printf("color : %i\n", config.tetri_list->color);
+        for (int i = 0; i < config.tetri_list->height; i++) {
+            for (int j = 0; j < config.tetri_list->width; j++) {
+                printf("%i", config.tetri_list->shape[i][j]);
             }
             printf("\n");
         }
-        tetriminos = tetriminos->next;
+        config.tetri_list = config.tetri_list->next;
         printf("\n\n");
     }
-    destroy_tetriminos_list(tetriminos);
+    launch_game(config);
+    destroy_tetriminos_list(config.tetri_list);
     return (0);
 }
