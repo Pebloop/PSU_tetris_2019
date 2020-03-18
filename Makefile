@@ -1,4 +1,4 @@
-SRC	=	src/
+SRC	=	src/parsing.c
 
 MAIN =	main.c
 
