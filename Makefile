@@ -1,6 +1,7 @@
 SRC	=	src/parsing.c			\
 		src/game/launch_game.c	\
 		src/init_config.c		\
+		src/display_usage.c		\
 
 MAIN =	main.c
 

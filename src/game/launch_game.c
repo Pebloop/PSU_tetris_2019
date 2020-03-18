@@ -16,5 +16,5 @@
 
 int launch_game(config_t config)
 {
-    return 0;    
+    return 0;
 }

@@ -7,11 +7,14 @@
 
 #include <stddef.h>
 #include "tetris.h"
+#include "fae.h"
 
 int main(int argc, char **argv)
 {
     config_t config = {0};
 
+    if (argc == 2 && !fae_strcmp(argv[1], "--help"))
+        return display_usage();
     init_config(&config);
     if (get_tetriminos_list(&(config.tetri_list)) == 84)
         return (84);
