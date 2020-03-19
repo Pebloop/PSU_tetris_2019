@@ -11,6 +11,9 @@ int config_level(config_t *config)
 {
     char *pointer = optarg;
 
+    if (!my_is_int(&pointer, ' '))
+        return (84);
+    pointer = optarg;
     config->level = get_next_nbr(&pointer, ' ');
     if (config->level <= 0)
         return (84);
