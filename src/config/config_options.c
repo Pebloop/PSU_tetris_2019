@@ -9,18 +9,22 @@
 
 int config_level(config_t *config)
 {
-    (void) config;
+    char *pointer = optarg;
+
+    config->level = get_next_nbr(&pointer, ' ');
+    if (config->level <= 0)
+        return (84);
     return (0);
 }
 
 int config_next(config_t *config)
 {
-    (void) config;
+    config->hide_next = 1;
     return (0);
 }
 
 int config_debug(config_t *config)
 {
-    (void) config;
+    config->debug_mode = 1;
     return (0);
 }

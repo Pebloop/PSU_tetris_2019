@@ -30,7 +30,21 @@ int main(int argc, char **argv)
         config.tetri_list = config.tetri_list->next;
         printf("\n\n");
     }*/
+
     launch_game(config);
     destroy_tetriminos_list(config.tetri_list);
+
+    /*printf("level : %i\n", config.level);
+    printf("hide_next : %i\n", config.hide_next);
+    printf("debug_mode : %i\n", config.debug_mode);
+    printf("map_width : %i\n", config.map_width);
+    printf("map_height : %i\n", config.map_height);
+    printf("move_left : %i\n", config.key.move_left);
+    printf("move_right : %i\n", config.key.move_right);
+    printf("rotate : %i\n", config.key.rotate);
+    printf("drop : %i\n", config.key.drop);
+    printf("pause : %i\n", config.key.pause);
+    printf("quit : %i\n", config.key.quit);*/
+
     return (0);
 }

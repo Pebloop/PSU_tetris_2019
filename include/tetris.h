@@ -89,7 +89,7 @@ int set_option(config_t *config, int option);
 // config_controls.c
 int config_left(config_t *config);
 int config_right(config_t *config);
-int config_turn(config_t *config);
+int config_rotate(config_t *config);
 int config_drop(config_t *config);
 
 // config_ui.c
