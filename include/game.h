@@ -22,6 +22,7 @@ typedef struct game_data {
     int lines;
     int score;
     int timer;
+    int turn;
 } game_data_t;
 
 #endif // GAME_H

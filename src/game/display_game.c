@@ -73,4 +73,7 @@ void diplay_game(config_t config, game_data_t *gd)
         display_line(config, gd, i);
     }
     display_player(config, gd);
+    if (!config.hide_next)
+        display_next(config, gd);
+    display_score(config, gd);
 }

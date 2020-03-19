@@ -31,6 +31,7 @@ int display_error_size_screen(config_t *config)
             mvprintw(y / 2, x / 2 - 13, "Please, enlarge the screen");
             refresh();
         }
+        erase();
         return 0;
     }
     return 1;
@@ -40,10 +41,9 @@ void manage_input(config_t *config, game_data_t *gd, int input)
 {
     (input == config->key.move_left) ? move_left(config, gd) : 0;
     (input == config->key.move_right) ? move_right(config, gd) : 0;
-    if (input == config->key.rotate)
-        gd->current_move.rotation++;
-    if (gd->current_move.rotation > 3)
-        gd->current_move.rotation = 0;
+    (input == config->key.move_right) ? move_drop(config, gd) : 0;
+    (input == config->key.rotate) ? rotate(config, gd) : 0;
+    (input == config->key.pause) ? game_pause() : 0;
 }
 
 int game_loop(config_t *config, game_data_t *gd)

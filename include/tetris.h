@@ -125,5 +125,9 @@ void set_move(game_data_t *gd, config_t config);
 void diplay_game(config_t config, game_data_t *gd);
 
 // move_tetrimino.c
+void move_left(config_t *config, game_data_t *gd);
+void move_right(config_t *config, game_data_t *gd);
+void rotate(config_t *config, game_data_t *gd);
+void game_pause();
 
 #endif // DEF_TETRIS

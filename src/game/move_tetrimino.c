@@ -30,3 +30,22 @@ void move_right(config_t *config, game_data_t *gd)
     if (gd->current_move.pos_x < max)
         gd->current_move.pos_x++;
 }
+
+void move_drop(config_t *config, game_data_t *gd)
+{
+
+}
+
+void rotate(config_t *config, game_data_t *gd)
+{
+    gd->current_move.rotation++;
+    if (gd->current_move.rotation > 3)
+        gd->current_move.rotation = 0;
+}
+
+void game_pause()
+{
+    nodelay(stdscr, FALSE);
+    getch();
+    nodelay(stdscr, TRUE);
+}

@@ -17,6 +17,17 @@
 #include "ncurses.h"
 #include "game.h"
 
+static void set_color(void)
+{
+    init_pair(0, COLOR_BLACK, COLOR_BLACK);
+    init_pair(1, COLOR_GREEN, COLOR_GREEN);
+    init_pair(2, COLOR_BLUE, COLOR_BLUE);
+    init_pair(3, COLOR_RED, COLOR_RED);
+    init_pair(4, COLOR_MAGENTA, COLOR_MAGENTA);
+    init_pair(5, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(6, COLOR_CYAN, COLOR_CYAN);
+}
+
 static void start_ncurses(void)
 {
     initscr();
@@ -26,12 +37,7 @@ static void start_ncurses(void)
     curs_set(FALSE);
     nodelay(stdscr, TRUE);
     start_color();
-    init_pair(1, COLOR_BLACK, COLOR_BLACK);
-    init_pair(1, COLOR_GREEN, COLOR_GREEN);
-    init_pair(2, COLOR_BLUE, COLOR_BLUE);
-    init_pair(3, COLOR_RED, COLOR_RED);
-    init_pair(4, COLOR_MAGENTA, COLOR_MAGENTA);
-    init_pair(5, COLOR_YELLOW, COLOR_YELLOW);
+    set_color();
     clear();
 }
 
@@ -44,6 +50,7 @@ static void game_init(config_t config, game_data_t *gd)
         for (int x = 0; x < config.map_width; x++)
             gd->board[i][x] = 0;
     }
+    set_move(gd, config);
     set_move(gd, config);
     gd->lines = 0;
     gd->score = 0;
