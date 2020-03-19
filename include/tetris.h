@@ -71,6 +71,7 @@ int is_wrong_filename(char *filename);
 int is_wrong_format(char *content);
 int my_is_int(char **str, char end);
 int check_shape(tetrimino_t *tetriminos, char *content);
+int check_line(char **content, tetrimino_t *tetriminos);
 
 // init_config.c
 int init_config(config_t *config);

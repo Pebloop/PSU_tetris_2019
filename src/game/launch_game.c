@@ -11,11 +11,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h>
 #include "fae.h"
 #include "tetris.h"
 #include "ncurses.h"
 #include "game.h"
-#include "time.h"
 
 static void start_ncurses(void)
 {
