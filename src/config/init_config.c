@@ -16,8 +16,9 @@ int init_config(config_t *config, int argc, char **argv)
     if (get_tetriminos_list(&(config->tetri_list)) == 84)
         return (84);
     init_keys_default(config);
-    init_keys_args(config, argc, argv);
-    return 0;
+    if (init_keys_args(config, argc, argv) == 84)
+        return (84);
+    return (0);
 }
 
 void init_keys_default(config_t *config)
