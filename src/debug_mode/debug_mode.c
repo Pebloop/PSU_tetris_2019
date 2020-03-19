@@ -37,9 +37,12 @@ void display_tetriminos_list(tetrimino_t *list, int size)
     while (list != NULL) {
         fae_put("Tetriminos : ");
         fae_put("Name %s : ", list->name);
-        fae_put("Size %d*%d : ", list->width, list->height);
-        fae_put("Color %d :\n", list->color);
-        display_tetrimino_shape(list);
+        if (list->shape != NULL) {
+            fae_put("Size %d*%d : ", list->width, list->height);
+            fae_put("Color %d :\n", list->color);
+            display_tetrimino_shape(list);
+        } else
+            fae_put("Error\n");
         list = list->next;
     }
 }
