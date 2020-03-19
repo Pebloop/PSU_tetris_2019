@@ -20,7 +20,7 @@ OBJ	=	$(SRC:.c=.o)
 
 MAIN_OBJ = 	$(MAIN:.c=.o)
 
-CFLAGS = -fdiagnostics-color -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -lncurses -g3
+CFLAGS = -Wall -Wextra -fdiagnostics-color -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -lncurses -g3
 
 NAME =	tetris
 
