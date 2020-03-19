@@ -62,8 +62,9 @@ int my_strcat(char **dest, char *str1, char *str2);
 int get_file_content(char **content, int fd);
 
 // initialize_tetrimino.c
-int parse_file(tetrimino_t **tetriminos, char *content, char *filename);
+int init_tetrimino(tetrimino_t **tetriminos, char *content, char *filename);
 int get_tetrimino_name(tetrimino_t *tetrimino, char *filename);
+int parse_file(tetrimino_t *tetrimino, char *content);
 int get_next_nbr(char **str, char end);
 
 // get_shape.c
@@ -75,8 +76,8 @@ void destroy_matrix(int **matrix, int last_line);
 int is_wrong_filename(char *filename);
 int is_wrong_format(char *content);
 int my_is_int(char **str, char end);
-int check_shape(tetrimino_t *tetriminos, char *content);
-int check_line(char **content, tetrimino_t *tetriminos);
+int is_wrong_shape(tetrimino_t *tetriminos, char *content);
+int is_wrong_line(char **content, tetrimino_t *tetriminos);
 
 /*    CONFIGURATION    */
 

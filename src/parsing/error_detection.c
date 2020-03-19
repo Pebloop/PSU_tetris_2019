@@ -25,18 +25,18 @@ int is_wrong_filename(char *filename)
 int is_wrong_format(char *content)
 {
     if (!my_is_int(&content, ' ') || *content != ' ')
-        return (84);
+        return (1);
     for (; *content == ' '; content++);
     if (!my_is_int(&content, ' ') || *content != ' ')
-        return (84);
+        return (1);
     for (; *content == ' '; content++);
     if (!my_is_int(&content, '\n') || *content != '\n')
-        return (84);
+        return (1);
     if (++content == 0)
-        return (84);
+        return (1);
     for (; *content != 0; content++) {
         if (*content != ' ' && *content != '*' && *content != '\n')
-            return (84);
+            return (1);
     }
     return (0);
 }
@@ -52,7 +52,7 @@ int my_is_int(char **str, char end)
     return (1);
 }
 
-int check_shape(tetrimino_t *tetriminos, char *content)
+int is_wrong_shape(tetrimino_t *tetriminos, char *content)
 {
     int lines = 0;
     int i = 0;
@@ -60,15 +60,15 @@ int check_shape(tetrimino_t *tetriminos, char *content)
     for (; lines < tetriminos->height && content[i] != 0; i++)
         lines += (content[i] == '\n');
     if (lines != tetriminos->height || content[i] != 0)
-        return (84);
+        return (1);
     for (int j = 0; j < tetriminos->height; j++) {
-        if (check_line(&content, tetriminos) == 84)
-            return (84);
+        if (is_wrong_line(&content, tetriminos))
+            return (1);
     }
     return (0);
 }
 
-int check_line(char **content, tetrimino_t *tetriminos)
+int is_wrong_line(char **content, tetrimino_t *tetriminos)
 {
     int nb_asterisks = 0;
     int cols = 0;
@@ -80,11 +80,11 @@ int check_line(char **content, tetrimino_t *tetriminos)
         nb_asterisks += (**content == '*');
     }
     if (nb_asterisks <= 0)
-        return (84);
+        return (1);
     ptr = *content - 1;
     for (; *ptr != '*'; trailing_spaces++, ptr--);
     if (cols - trailing_spaces > tetriminos->width)
-        return (84);
+        return (1);
     (*content)++;
     return (0);
 }

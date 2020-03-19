@@ -45,7 +45,7 @@ int get_file_content(char **content, int fd)
     int size_of_read = 0;
 
     if (fstat(fd, &buffer) == -1)
-        return (1);
+        return (84);
     *content = malloc(sizeof(char) * buffer.st_size + 1);
     if (*content == NULL)
         return (84);

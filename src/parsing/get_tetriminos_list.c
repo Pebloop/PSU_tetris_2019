@@ -10,9 +10,6 @@
 
 int get_tetriminos_list(tetrimino_t **tetriminos)
 {
-    // TODO : stocker les tetriminos pas ok et afficher "Error" dans le debug
-    //        mode
-
     DIR *directory = NULL;
     struct dirent *current_file = NULL;
     tetrimino_t *copy_pointer = *tetriminos;
@@ -39,6 +36,7 @@ int get_tetrimino(tetrimino_t **tetriminos, char *filename)
 {
     int fd = 0;
     char *content = NULL;
+
     if (open_file(filename, &fd) == 84)
         return (84);
     if (get_file_content(&content, fd) == 84) {
@@ -46,8 +44,11 @@ int get_tetrimino(tetrimino_t **tetriminos, char *filename)
         return (84);
     }
     close(fd);
-    if (is_wrong_format(content) || create_tetrimino(tetriminos) == 84 ||
-        parse_file(tetriminos, content, filename) == 84) {
+    if (create_tetrimino(tetriminos) == 84) {
+        free(content);
+        return (84);
+    }
+    if (init_tetrimino(tetriminos, content, filename) == 84) {
         free(content);
         return (84);
     }

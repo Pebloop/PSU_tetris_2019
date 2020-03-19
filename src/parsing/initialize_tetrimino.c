@@ -8,26 +8,26 @@
 #include "fae.h"
 #include "tetris.h"
 
-int parse_file(tetrimino_t **tetriminos, char *content, char *filename)
+int init_tetrimino(tetrimino_t **tetriminos, char *content, char *filename)
 {
     tetrimino_t *last = NULL;
+    int return_value = 0;
 
     for (last = *tetriminos; last->next != NULL; last = last->next);
     if (get_tetrimino_name(last, filename) == 84)
         return (84);
-    last->width = get_next_nbr(&content, ' ');
-    content++;
-    last->height = get_next_nbr(&content, ' ');
-    content++;
-    last->color = get_next_nbr(&content, '\n');
-    content++;
-    if (last->color < 0 || 15 < last->color) {
-        free(last->name);
-        return (84);
+    if (is_wrong_format(content)) {
+        return (-1);
     }
-    if (get_shape(last, content) == 84) {
+    return_value = parse_file(last, content);
+    if (return_value == 84) {
         free(last->name);
         return (84);
+    } else if (return_value == -1) {
+        last->width = -1;
+        last->height = -1;
+        last->color = -1;
+        last->shape = NULL;
     }
     return (0);
 }
@@ -44,6 +44,21 @@ int get_tetrimino_name(tetrimino_t *tetrimino, char *filename)
         tetrimino->name[i] = filename[i];
     tetrimino->name[filename_len - 10] = 0;
     return (0);
+}
+
+int parse_file(tetrimino_t *tetrimino, char *content)
+{
+    tetrimino->width = get_next_nbr(&content, ' ');
+    content++;
+    tetrimino->height = get_next_nbr(&content, ' ');
+    content++;
+    tetrimino->color = get_next_nbr(&content, '\n');
+    content++;
+    if (tetrimino->color < 0 || 15 < tetrimino->color) {
+        free(tetrimino->name);
+        return (-1);
+    }
+    return (get_shape(tetrimino, content));
 }
 
 int get_next_nbr(char **str, char end)

@@ -9,8 +9,8 @@
 
 int get_shape(tetrimino_t *tetriminos, char *content)
 {
-    if (check_shape(tetriminos, content) == 84)
-        return (84);
+    if (is_wrong_shape(tetriminos, content))
+        return (-1);
     if (create_matrix(tetriminos) == 84)
         return (84);
     for (int i = 0; i < tetriminos->height; i++) {
@@ -30,8 +30,10 @@ int create_matrix(tetrimino_t *tetriminos)
         return (84);
     for (int i = 0; i < tetriminos->height; i++) {
         tetriminos->shape[i] = malloc(sizeof(int) * tetriminos->width);
-        if (tetriminos->shape[i] == NULL)
+        if (tetriminos->shape[i] == NULL) {
             destroy_matrix(tetriminos->shape, i - 1);
+            return (84);
+        }
         for (int j = 0; j < tetriminos->width; j++)
             tetriminos->shape[i][j] = 0;
     }
