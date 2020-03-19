@@ -15,11 +15,9 @@ int main(int argc, char **argv)
 
     if (argc == 2 && !fae_strcmp(argv[1], "--help"))
         return display_usage();
-    init_config(&config);
-    if (get_tetriminos_list(&(config.tetri_list)) == 84)
-        return (84);
-
-    while (config.tetri_list != NULL) {
+    if (init_config(&config))
+        return 84;
+    /*while (config.tetri_list != NULL) {
         printf("width : %i\n", config.tetri_list->width);
         printf("height : %i\n", config.tetri_list->height);
         printf("color : %i\n", config.tetri_list->color);
@@ -31,7 +29,7 @@ int main(int argc, char **argv)
         }
         config.tetri_list = config.tetri_list->next;
         printf("\n\n");
-    }
+    }*/
     launch_game(config);
     destroy_tetriminos_list(config.tetri_list);
     return (0);

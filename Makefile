@@ -1,7 +1,15 @@
-SRC	=	src/parsing.c			\
-		src/game/launch_game.c	\
-		src/init_config.c		\
-		src/display_usage.c		\
+SRC	=	src/get_tetriminos_list.c	\
+		src/get_file_content.c		\
+		src/initialize_tetrimino.c	\
+		src/get_shape.c				\
+		src/error_detection.c		\
+		src/init_config.c			\
+		src/display_usage.c			\
+		src/game/game_loop.c		\
+		src/game/launch_game.c		\
+		src/game/set_move.c			\
+		src/game/display_game.c     \
+		src/game/move_tetrimino.c	\
 
 MAIN =	main.c
 
