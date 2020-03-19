@@ -5,6 +5,9 @@ SRC	=	src/display_usage.c					\
 		src/parsing/get_shape.c				\
 		src/parsing/error_detection.c		\
 		src/config/init_config.c			\
+		src/config/config_controls.c		\
+		src/config/config_ui.c				\
+		src/config/config_options.c			\
 		src/game/game_loop.c				\
 		src/game/launch_game.c				\
 		src/game/set_move.c					\

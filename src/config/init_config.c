@@ -52,7 +52,7 @@ int init_keys_args(config_t *config, int argc, char **argv)
 
 int set_option(config_t *config, int option)
 {
-    /*char *options = "LlrtdqpwD";
+    char *options = "LlrtdqpwD";
     int (*functions[9])(config_t *) = {config_level, config_left,
         config_right, config_turn, config_drop, config_quit, config_pause,
         config_next, config_debug};
@@ -61,5 +61,5 @@ int set_option(config_t *config, int option)
         if (option == options[i])
             return (functions[i](config));
     }
-    return (84);*/
+    return (84);
 }

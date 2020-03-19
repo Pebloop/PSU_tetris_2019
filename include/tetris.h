@@ -87,14 +87,19 @@ int init_keys_args(config_t *config, int argc, char **argv);
 int set_option(config_t *config, int option);
 
 // config_controls.c
-
+int config_left(config_t *config);
+int config_right(config_t *config);
+int config_turn(config_t *config);
+int config_drop(config_t *config);
 
 // config_ui.c
-
+int config_quit(config_t *config);
+int config_pause(config_t *config);
 
 // config_options.c
-
-
+int config_level(config_t *config);
+int config_next(config_t *config);
+int config_debug(config_t *config);
 
 /*    DEBUG MODE    */
 
