@@ -103,8 +103,11 @@ int config_debug(config_t *config);
 
 /*    DEBUG MODE    */
 
-
-
+// debug_mode.c
+void launch_debug_mode(config_t config);
+void sort_tetriminos_list(tetrimino_t *list, int size);
+void display_tetriminos_list(tetrimino_t *list, int size);
+void display_tetrimino_shape(tetrimino_t *tetrimino);
 
 /*    GAME    */
 
