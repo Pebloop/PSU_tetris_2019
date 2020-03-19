@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** tetris
 ** File description:
-** Main function
+** Initializes the configuration (level, keys, options, etc).
 */
 
 #include "tetris.h"
@@ -11,7 +11,7 @@
 int init_config(config_t *config)
 {
     config->tetri_list = NULL;
-    
+
     if (get_tetriminos_list(&(config->tetri_list)) == 84)
         return (84);
     config->tlist_size = 0;

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** tetris
 ** File description:
-** Parsing of tetriminos' configuration files.
+** Initializes ncurses and other tools needed.
 */
 
 #include <sys/types.h>
@@ -57,7 +57,7 @@ static void end_curses(void)
 }
 
 int launch_game(config_t config)
-{  
+{
     game_data_t gd = {0};
 
     start_ncurses();

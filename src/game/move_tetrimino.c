@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** tetris
 ** File description:
-** Parsing of tetriminos' configuration files.
+** Handles tetriminos' moves.
 */
 
 #include <sys/types.h>

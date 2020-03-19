@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** tetris
 ** File description:
-** display help
+** Displays help.
 */
 
 #include "fae.h"
