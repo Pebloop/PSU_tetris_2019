@@ -10,6 +10,9 @@
 
 int get_tetriminos_list(tetrimino_t **tetriminos)
 {
+    // TODO : stocker les tetriminos pas ok et afficher "Error" dans le debug
+    //        mode
+
     DIR *directory = NULL;
     struct dirent *current_file = NULL;
     tetrimino_t *copy_pointer = *tetriminos;
