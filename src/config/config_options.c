@@ -9,15 +9,18 @@
 
 int config_level(config_t *config)
 {
-
+    (void) config;
+    return (0);
 }
 
 int config_next(config_t *config)
 {
-
+    (void) config;
+    return (0);
 }
 
 int config_debug(config_t *config)
 {
-
+    (void) config;
+    return (0);
 }

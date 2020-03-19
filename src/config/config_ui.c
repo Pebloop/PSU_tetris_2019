@@ -9,10 +9,12 @@
 
 int config_quit(config_t *config)
 {
-
+    (void) config;
+    return (0);
 }
 
 int config_pause(config_t *config)
 {
-
+    (void) config;
+    return (0);
 }

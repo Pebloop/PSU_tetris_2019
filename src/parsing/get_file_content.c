@@ -18,6 +18,7 @@ int open_file(char *filename, int *fd)
     free(filepath);
     if (*fd == -1)
         return (84);
+    return (0);
 }
 
 int my_strcat(char **dest, char *str1, char *str2)

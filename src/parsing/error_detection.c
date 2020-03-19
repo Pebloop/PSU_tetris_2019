@@ -86,4 +86,5 @@ int check_line(char **content, tetrimino_t *tetriminos)
     if (cols - trailing_spaces > tetriminos->width)
         return (84);
     (*content)++;
+    return (0);
 }
