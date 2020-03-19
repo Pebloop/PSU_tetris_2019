@@ -45,6 +45,9 @@ typedef struct config {
     keymap_t key;
 } config_t;
 
+// display_usage.c
+int display_usage(void);
+
 /*    PARSING    */
 
 // get_tetriminos_list.c
@@ -75,26 +78,43 @@ int my_is_int(char **str, char end);
 int check_shape(tetrimino_t *tetriminos, char *content);
 int check_line(char **content, tetrimino_t *tetriminos);
 
-/*    GAME    */
+/*    CONFIGURATION    */
 
 // init_config.c
-int init_config(config_t *config);
+int init_config(config_t *config, int argc, char **argv);
+void init_keys_default(config_t *config);
+int init_keys_args(config_t *config, int argc, char **argv);
+int set_option(config_t *config, int option);
 
-// tetris.h
-int display_usage(void);
+// config_controls.c
 
-//launch_game.c
+
+// config_ui.c
+
+
+// config_options.c
+
+
+
+/*    DEBUG MODE    */
+
+
+
+
+/*    GAME    */
+
+// launch_game.c
 int launch_game(config_t config);
 
-//game_loop.c
+// game_loop.c
 int game_loop(config_t *config, game_data_t *gd);
 
-//set move
+// set_move.c
 void set_move(game_data_t *gd, config_t config);
 
-//display game
+// display_game.c
 void diplay_game(config_t config, game_data_t *gd);
 
-//move tetrimino
+// move_tetrimino.c
 
 #endif // DEF_TETRIS

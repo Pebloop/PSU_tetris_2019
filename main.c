@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
     if (argc == 2 && !fae_strcmp(argv[1], "--help"))
         return display_usage();
-    if (init_config(&config))
+    if (init_config(&config, argc, argv))
         return 84;
     /*while (config.tetri_list != NULL) {
         printf("width : %i\n", config.tetri_list->width);
