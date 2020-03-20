@@ -15,6 +15,7 @@ SRC	=	src/display_usage.c					\
 		src/game/display_game.c     		\
 		src/game/move_tetrimino.c			\
 		src/game/display_score.c			\
+		src/game/clock.c					\
 
 MAIN =	main.c
 

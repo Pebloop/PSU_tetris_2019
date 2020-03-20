@@ -33,7 +33,7 @@ void move_right(config_t *config, game_data_t *gd)
 
 void move_drop(config_t *config, game_data_t *gd)
 {
-
+    gd->turn.current = 2;
 }
 
 void rotate(config_t *config, game_data_t *gd)

@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "fae.h"
 #include "tetris.h"
 #include "ncurses.h"
@@ -41,15 +42,23 @@ void manage_input(config_t *config, game_data_t *gd, int input)
 {
     (input == config->key.move_left) ? move_left(config, gd) : 0;
     (input == config->key.move_right) ? move_right(config, gd) : 0;
-    (input == config->key.move_right) ? move_drop(config, gd) : 0;
+    (input == config->key.drop) ? move_drop(config, gd) : 0;
     (input == config->key.rotate) ? rotate(config, gd) : 0;
     (input == config->key.pause) ? game_pause() : 0;
+}
+
+int end_turn(config_t *config, game_data_t *gd)
+{
+    gd->current_move.pos_y++;
+    clock_init(&(gd->turn));
 }
 
 int game_loop(config_t *config, game_data_t *gd)
 {
     int input = 0;
 
+    clock_update(&(gd->timer));
+    clock_update(&(gd->turn));
     display_error_size_screen(config);
     diplay_game(*config, gd);
     refresh();
@@ -57,5 +66,7 @@ int game_loop(config_t *config, game_data_t *gd)
     if (input == config->key.quit)
         return 1;
     manage_input(config, gd, input);
+    if (gd->turn.current > 1 / config->level)
+        end_turn(config, gd);
     return 0;
 }

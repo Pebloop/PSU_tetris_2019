@@ -123,11 +123,20 @@ void set_move(game_data_t *gd, config_t config);
 
 // display_game.c
 void diplay_game(config_t config, game_data_t *gd);
+tetrimino_t *get_tetro_by_id(config_t config, int index);
+void display_score(config_t config, game_data_t *gd);
+void display_next(config_t config, game_data_t *gd);
 
 // move_tetrimino.c
 void move_left(config_t *config, game_data_t *gd);
 void move_right(config_t *config, game_data_t *gd);
 void rotate(config_t *config, game_data_t *gd);
 void game_pause();
+
+//clock.c
+void clock_init(clockss_t *timer);
+void clock_update(clockss_t *timer);
+int clock_get_second(clockss_t timer);
+int clock_get_minute(clockss_t timer);
 
 #endif // DEF_TETRIS

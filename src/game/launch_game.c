@@ -54,7 +54,8 @@ static void game_init(config_t config, game_data_t *gd)
     set_move(gd, config);
     gd->lines = 0;
     gd->score = 0;
-    gd->timer = 0;
+    clock_init(&(gd->timer));
+    clock_init(&(gd->turn));
 }
 
 static void end_curses(void)
