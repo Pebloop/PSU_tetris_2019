@@ -79,8 +79,8 @@ int is_wrong_line(char **content, tetrimino_t *tetriminos)
         cols++;
         nb_asterisks += (**content == '*');
     }
-    if (nb_asterisks <= 0)
-        return (1);
+    /*if (nb_asterisks <= 0)
+        return (1);*/
     ptr = *content - 1;
     for (; *ptr != '*'; trailing_spaces++, ptr--);
     if (cols - trailing_spaces > tetriminos->width)
