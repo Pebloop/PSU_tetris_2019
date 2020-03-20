@@ -12,10 +12,17 @@
 int init_config(config_t *config, int argc, char **argv)
 {
     config->tetri_list = NULL;
+    int correct_tetriminos = 0;
 
     if (get_tetriminos_list(&(config->tetri_list)) == 84)
         return (84);
     init_keys_default(config);
+    for (tetrimino_t *t = config->tetri_list; t != NULL; t = t->next) {
+        if (t->shape != NULL)
+            correct_tetriminos++;
+    }
+    if (!correct_tetriminos)
+        return (84);
     if (init_keys_args(config, argc, argv) == 84)
         return (84);
     return (0);
