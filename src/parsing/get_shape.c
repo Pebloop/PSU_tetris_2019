@@ -18,7 +18,10 @@ int get_shape(tetrimino_t *tetriminos, char *content)
             tetriminos->shape[i][j] = (*content == '*');
             content++;
         }
-        for (; *content == ' ' || *content == '\n'; content++);
+        if (*content == '\n')
+            content++;
+        else
+            for (; *content == ' ' || *content == '\n'; content++);
     }
     return (0);
 }
