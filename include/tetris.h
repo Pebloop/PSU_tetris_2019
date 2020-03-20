@@ -106,9 +106,13 @@ int config_debug(config_t *config);
 
 // debug_mode.c
 void launch_debug_mode(config_t config);
-void sort_tetriminos_list(tetrimino_t *list, int size);
 void display_tetriminos_list(tetrimino_t *list, int size);
 void display_tetrimino_shape(tetrimino_t *tetrimino);
+
+// sort_tetriminos.c
+void sort_tetriminos_list(tetrimino_t **list, int size);
+void swap_elements_if_needed(tetrimino_t **list, int index);
+void swap_elements(tetrimino_t **list, int index);
 
 /*    GAME    */
 

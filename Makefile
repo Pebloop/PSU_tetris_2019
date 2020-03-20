@@ -9,6 +9,7 @@ SRC	=	src/display_usage.c					\
 		src/config/config_ui.c				\
 		src/config/config_options.c			\
 		src/debug_mode/debug_mode.c 		\
+		src/debug_mode/sort_tetriminos.c 	\
 		src/game/game_loop.c				\
 		src/game/launch_game.c				\
 		src/game/set_move.c					\

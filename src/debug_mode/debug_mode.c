@@ -26,14 +26,11 @@ void launch_debug_mode(config_t config)
     // while (/* no key pressed*/); // TODO
 }
 
-void sort_tetriminos_list(tetrimino_t *list, int size)
-{
-    // TODO
-}
-
 void display_tetriminos_list(tetrimino_t *list, int size)
 {
-    sort_tetriminos_list(list, size);
+    if (list == NULL)
+        return;
+    sort_tetriminos_list(&list, size);
     while (list != NULL) {
         fae_put("Tetriminos : ");
         fae_put("Name %s : ", list->name);
