@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <getopt.h>
 #include "game.h"
 
 typedef struct tetrimino {
@@ -85,6 +86,7 @@ int is_wrong_line(char **content, tetrimino_t *tetriminos);
 int init_config(config_t *config, int argc, char **argv);
 void init_keys_default(config_t *config);
 int init_keys_args(config_t *config, int argc, char **argv);
+void init_long_options(struct option long_options[11], char *names[9]);
 int set_option(config_t *config, int option);
 
 // config_controls.c

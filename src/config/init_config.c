@@ -49,13 +49,38 @@ void init_keys_default(config_t *config)
 int init_keys_args(config_t *config, int argc, char **argv)
 {
     int option = 0;
+    struct option long_options[11];
+    char *names[9] = {"level", "key-left", "key-right", "key-turn", "key-drop",
+        "key-quit", "key-payse", "without-next", "debug"};
 
     opterr = 0;
+    init_long_options(long_options, names);
     while ((option = getopt(argc, argv, "L:l:r:t:d:q:p:wD")) != -1) {
         if (option == '?' || set_option(config, option) == 84)
             return (84);
     }
     return (0);
+}
+
+void init_long_options(struct option long_options[11], char *names[9])
+{
+    char *values = "LlrtdqpwD";
+    int has_args[9] = {1, 1, 1, 1, 1, 1, 1, 0, 0};
+
+    for (int i = 0; i < 9; i++) {
+        long_options[i].name = names[i];
+        long_options[i].has_arg = has_args[i];
+        long_options[i].flag = NULL;
+        long_options[i].val = values[i];
+    }
+    long_options[9].name = "map-size";
+    long_options[9].has_arg = 1;
+    long_options[9].flag = NULL;
+    long_options[9].val = (int)'s';
+    long_options[10].name = 0;
+    long_options[10].has_arg = 0;
+    long_options[10].flag = 0;
+    long_options[10].val = 0;
 }
 
 int set_option(config_t *config, int option)
