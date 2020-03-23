@@ -5,18 +5,21 @@
 ** Displays the game's configuration until the user presses a key.
 */
 
+#include "ncurses.h"
 #include "fae.h"
 #include "tetris.h"
 
 void launch_debug_mode(config_t config)
 {
+    char str[2] = {0};
+
     fae_put("*** DEBUG MODE ***\n");
-    fae_put("Key Left : %c\n", config.key.move_left);
-    fae_put("Key Right : %c\n", config.key.move_right);
-    fae_put("Key Turn : %c\n", config.key.rotate);
-    fae_put("Key Drop : %c\n", config.key.drop);
-    fae_put("Key Quit : %c\n", config.key.quit);
-    fae_put("Key Pause : %c\n", config.key.pause);
+    fae_put("Key Left : %s\n", get_key_by_code(config.key.move_left, str));
+    fae_put("Key Right : %s\n", get_key_by_code(config.key.move_right, str));
+    fae_put("Key Turn : %s\n", get_key_by_code(config.key.rotate, str));
+    fae_put("Key Drop : %s\n", get_key_by_code(config.key.drop, str));
+    fae_put("Key Quit : %s\n", get_key_by_code(config.key.quit, str));
+    fae_put("Key Pause : %s\n", get_key_by_code(config.key.pause, str));
     fae_put("Next : %s\n", config.hide_next ? "No" : "Yes");
     fae_put("Level : %d\n", config.level);
     fae_put("Size : %d*%d\n", config.map_height, config.map_width);
@@ -24,6 +27,25 @@ void launch_debug_mode(config_t config)
     display_tetriminos_list(config.tetri_list, config.tlist_size);
     fae_put("Press any key to start Tetris");
     // while (/* no key pressed*/); // TODO
+}
+
+char *get_key_by_code(int key_code, char *str)
+{
+    switch (key_code) {
+    case KEY_UP :
+        return ("^EOA");
+    case KEY_DOWN :
+        return ("^EOB");
+    case KEY_RIGHT :
+        return ("^EOC");
+    case KEY_LEFT :
+        return ("^EOD");
+    case 32 :
+        return ("(space)");
+    default :
+        str[0] = key_code;
+        return (str);
+    }
 }
 
 void display_tetriminos_list(tetrimino_t *list, int size)
