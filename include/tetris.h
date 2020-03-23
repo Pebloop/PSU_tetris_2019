@@ -98,6 +98,7 @@ int config_drop(config_t *config);
 // config_ui.c
 int config_quit(config_t *config);
 int config_pause(config_t *config);
+int config_get_key(char *str);
 
 // config_options.c
 int config_size(config_t *config);
