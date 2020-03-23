@@ -46,7 +46,7 @@ typedef struct config {
 } config_t;
 
 // display_usage.c
-int display_usage(void);
+int display_usage(char *program_name);
 
 /*    PARSING    */
 

@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     config_t config = {0};
 
     if (argc == 2 && !fae_strcmp(argv[1], "--help"))
-        return display_usage();
+        return display_usage(argv[0]);
     if (init_config(&config, argc, argv))
         return 84;
     if (config.debug_mode)

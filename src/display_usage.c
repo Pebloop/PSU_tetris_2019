@@ -7,9 +7,9 @@
 
 #include "fae.h"
 
-int display_usage(void)
+int display_usage(char *program_name)
 {
-    fae_putstr("Usage:    ./tetris [options]\n");
+    fae_put("Usage:    %s [options]\n", program_name);
     fae_putstr("Options:\n --help               Display this help\n");
     fae_putstr(" -L --level={num}     Start Tetris at level num (def: 1)\n");
     fae_putstr(" -l --key-left={K}    ");
