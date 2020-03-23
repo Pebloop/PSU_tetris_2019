@@ -100,6 +100,7 @@ int config_quit(config_t *config);
 int config_pause(config_t *config);
 
 // config_options.c
+int config_size(config_t *config);
 int config_level(config_t *config);
 int config_next(config_t *config);
 int config_debug(config_t *config);

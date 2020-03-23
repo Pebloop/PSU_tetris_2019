@@ -7,6 +7,26 @@
 
 #include "tetris.h"
 
+int config_size(config_t *config)
+{
+    char *pointer = optarg;
+
+    if (!my_is_int(&pointer, ','))
+        return (84);
+    if (*pointer != ',')
+        return (84);
+    pointer++;
+    if (!my_is_int(&pointer, ' '))
+        return (84);
+    pointer = optarg;
+    config->map_height = get_next_nbr(&pointer, ',');
+    pointer++;
+    config->map_width = get_next_nbr(&pointer, ' ');
+    if (config->map_height <= 0 || config->map_width <= 0)
+        return (84);
+    return (0);
+}
+
 int config_level(config_t *config)
 {
     char *pointer = optarg;
