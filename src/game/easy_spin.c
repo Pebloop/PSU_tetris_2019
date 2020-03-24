@@ -23,9 +23,14 @@ void easy_spin_update(game_data_t *gd)
         clock_init(&(gd->turn));
 }
 
-int abs(int i)
+int calcul_score(int exp, int q)
 {
-    if (i < 0)
-        return -i;
-    return i;
+    int result = q;
+
+    if (exp == 0)
+        return 0;
+    for (int i = 2; i <= exp; i++) {
+        result += q * i;
+    }
+    return result;
 }

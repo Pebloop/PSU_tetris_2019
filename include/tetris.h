@@ -144,7 +144,7 @@ int clock_get_minute(clockss_t timer);
 
 //easy_spin.c
 void easy_spin_update(game_data_t *gd);
-int abs(int i);
+int calcul_score(int exp, int q);
 
 //test collision.c
 int test_collision(config_t config, game_data_t *gd);

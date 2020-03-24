@@ -57,6 +57,13 @@ int end_turn(config_t *config, game_data_t *gd)
     clock_init(&(gd->turn));
 }
 
+int block_data(config_t *config, game_data_t *gd)
+{
+    config->level = (config->level > 20) ? 20 : config->level;
+    gd->score = (gd->score > 999999) ? 999999 : gd->score;
+    gd->timer.current = (gd->score > 60 * 99) ? 60 * 99 : gd->score;
+}
+
 int game_loop(config_t *config, game_data_t *gd)
 {
     int input = 0;
@@ -72,5 +79,6 @@ int game_loop(config_t *config, game_data_t *gd)
     manage_input(config, gd, input);
     if (gd->turn.current > 1.0 / config->level)
         end_turn(config, gd);
+    block_data(config, gd);
     return gd->lose;
 }

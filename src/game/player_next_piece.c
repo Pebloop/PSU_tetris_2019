@@ -50,9 +50,12 @@ static void kill_lines(config_t *config, game_data_t *gd){
     int lines = 0;
 
     for (int y = config->map_height - 1; y >= 0; y--) {
-        if (kill_check_line(config, gd, y))
+        if (kill_check_line(config, gd, y)) {
             kill_down(config, gd, y);
+            lines++;
+        }
     }
+    gd->score += calcul_score(lines, 50) * config->level;
     config->level = gd->lines / 10 + 1;
 }
 
@@ -70,5 +73,7 @@ void player_next_piece(config_t *config, game_data_t *gd)
     set_move(gd, *config);
     if (test_collision(*config, gd))
         gd->lose = 1;
+    else
+        gd->score += 10 * config->level;
     gd->easy_spin = 0;
 }
