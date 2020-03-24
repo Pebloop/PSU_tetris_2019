@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "game.h"
+#include "vector.h"
 
 typedef struct tetrimino {
     char *name;
@@ -117,11 +118,13 @@ int launch_game(config_t config);
 
 // game_loop.c
 int game_loop(config_t *config, game_data_t *gd);
+void player_next_piece(config_t *config, game_data_t *gd);
 
 // set_move.c
 void set_move(game_data_t *gd, config_t config);
 
 // display_game.c
+void display_line(config_t config, game_data_t *gd, int i);
 void diplay_game(config_t config, game_data_t *gd);
 tetrimino_t *get_tetro_by_id(config_t config, int index);
 void display_score(config_t config, game_data_t *gd);
@@ -138,5 +141,16 @@ void clock_init(clockss_t *timer);
 void clock_update(clockss_t *timer);
 int clock_get_second(clockss_t timer);
 int clock_get_minute(clockss_t timer);
+
+//easy_spin.c
+void easy_spin_update(game_data_t *gd);
+int abs(int i);
+
+//test collision.c
+int test_collision(config_t config, game_data_t *gd);
+
+//vector.c
+vector_t calcul_rotation(tetrimino_t *current, game_data_t *gd,
+    int x, int y);
 
 #endif // DEF_TETRIS

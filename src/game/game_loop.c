@@ -50,6 +50,10 @@ void manage_input(config_t *config, game_data_t *gd, int input)
 int end_turn(config_t *config, game_data_t *gd)
 {
     gd->current_move.pos_y++;
+    if (test_collision(*config, gd)) {
+        gd->current_move.pos_y--;
+        player_next_piece(config, gd);
+    }
     clock_init(&(gd->turn));
 }
 
@@ -66,7 +70,7 @@ int game_loop(config_t *config, game_data_t *gd)
     if (input == config->key.quit)
         return 1;
     manage_input(config, gd, input);
-    if (gd->turn.current > 1 / config->level)
+    if (gd->turn.current > 1.0 / config->level)
         end_turn(config, gd);
-    return 0;
+    return gd->lose;
 }
