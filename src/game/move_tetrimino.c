@@ -18,17 +18,20 @@
 
 void move_left(config_t *config, game_data_t *gd)
 {
-    if (gd->current_move.pos_x > 0)
-        gd->current_move.pos_x--;
+    gd->current_move.pos_x--;
+    if (test_collision(*config, gd)) {
+        gd->current_move.pos_x++;
+    } else
+        easy_spin_update(gd);
 }
 
 void move_right(config_t *config, game_data_t *gd)
 {
-    tetrimino_t *tetri = get_tetro_by_id(*config, gd->current_move.tetrimino);
-    int max = config->map_width - tetri->width;
-
-    if (gd->current_move.pos_x < max)
-        gd->current_move.pos_x++;
+    gd->current_move.pos_x++;
+    if (test_collision(*config, gd)) {
+        gd->current_move.pos_x--;
+    } else
+        easy_spin_update(gd);
 }
 
 void move_drop(config_t *config, game_data_t *gd)
@@ -38,9 +41,14 @@ void move_drop(config_t *config, game_data_t *gd)
 
 void rotate(config_t *config, game_data_t *gd)
 {
+    int tmp = gd->current_move.rotation;
+
     gd->current_move.rotation++;
     if (gd->current_move.rotation > 3)
         gd->current_move.rotation = 0;
+    if (test_collision(*config, gd))
+        gd->current_move.rotation = tmp;
+    easy_spin_update(gd);
 }
 
 void game_pause()

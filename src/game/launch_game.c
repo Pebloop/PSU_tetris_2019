@@ -56,6 +56,7 @@ static void game_init(config_t config, game_data_t *gd)
     gd->score = 0;
     clock_init(&(gd->timer));
     clock_init(&(gd->turn));
+    gd->easy_spin = 0;
 }
 
 static void end_curses(void)

@@ -17,6 +17,12 @@ SRC	=	src/display_usage.c					\
 		src/game/move_tetrimino.c			\
 		src/game/display_score.c			\
 		src/game/clock.c					\
+		src/game/test_collision.c			\
+		src/game/get_tetro_by_id.c			\
+		src/game/display_board.c			\
+		src/game/player_next_piece.c		\
+		src/game/easy_spin.c				\
+		src/game/calcul_rotation.c			\
 
 MAIN =	main.c
 

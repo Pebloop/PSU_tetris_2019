@@ -28,6 +28,8 @@ typedef struct game_data {
     int score;
     clockss_t timer;
     clockss_t turn;
+    int easy_spin;
+    int lose;
 } game_data_t;
 
 #endif // GAME_H
