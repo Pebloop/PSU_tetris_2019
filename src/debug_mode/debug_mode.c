@@ -5,7 +5,7 @@
 ** Displays the game's configuration until the user presses a key.
 */
 
-#include "ncurses.h"
+#include <ncurses.h>
 #include "fae.h"
 #include "tetris.h"
 
@@ -43,8 +43,8 @@ char *get_key_by_code(int key_code, char *str)
     case 32 :
         return ("(space)");
     default :
-        str[0] = key_code;
-        return (str);
+        //str[0] = key_code;
+        return (/*str*/keyname(key_code));
     }
 }
 
