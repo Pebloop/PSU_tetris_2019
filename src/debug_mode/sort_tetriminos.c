@@ -24,9 +24,27 @@ void swap_elements_if_needed(tetrimino_t **list, int index)
     for (int i = 0; i < index && tetr->next != NULL; i++)
         tetr = tetr->next;
     if (tetr != NULL && tetr->next != NULL) {
-        if (fae_strcmp(tetr->name, tetr->next->name) > 0)
+        if (elements_must_be_swapped(tetr->name, tetr->next->name) > 0)
             swap_elements(list, index);
     }
+}
+
+int elements_must_be_swapped(char *elem1, char *elem2)
+{
+    for (; *elem1 && *elem2; elem1++, elem2++) {
+        if (get_lowercase(*elem1) > get_lowercase(*elem2))
+            return (1);
+        else if (get_lowercase(*elem1) < get_lowercase(*elem2))
+            return (0);
+    }
+    return (*elem1 - *elem2 > 0);
+}
+
+char get_lowercase(char c)
+{
+    if (!('A' <= c && c <= 'Z'))
+        return (c);
+    return (c + ('a' - 'A'));
 }
 
 void swap_elements(tetrimino_t **list, int index)

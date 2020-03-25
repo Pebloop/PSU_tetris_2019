@@ -120,6 +120,8 @@ void remove_incorrect_tetriminos(config_t *config);
 // sort_tetriminos.c
 void sort_tetriminos_list(tetrimino_t **list, int size);
 void swap_elements_if_needed(tetrimino_t **list, int index);
+int elements_must_be_swapped(char *elem1, char *elem2);
+char get_lowercase(char c);
 void swap_elements(tetrimino_t **list, int index);
 
 /*    GAME    */
