@@ -9,7 +9,7 @@
 #include "fae.h"
 #include "tetris.h"
 
-void launch_debug_mode(config_t *config) //
+void launch_debug_mode(config_t *config)
 {
     fae_put("*** DEBUG MODE ***\n");
     fae_put("Key Left : %s\n", get_key_by_code(config->key.move_left));
@@ -24,7 +24,7 @@ void launch_debug_mode(config_t *config) //
     fae_put("Tetriminos : %d\n", config->tlist_size);
     display_tetriminos_list(config);
     fae_put("Press any key to start Tetris");
-    // while (/* no key pressed*/);
+    for (char c = 0; !c; read(0, &c, 1));
 }
 
 char *get_key_by_code(int key_code)
