@@ -24,6 +24,7 @@ int config_size(config_t *config)
     config->map_width = get_next_nbr(&pointer, ' ');
     if (config->map_height <= 0 || config->map_width <= 0)
         return (84);
+    check_tetriminos_sizes(config);
     return (0);
 }
 
@@ -50,4 +51,16 @@ int config_debug(config_t *config)
 {
     config->debug_mode = 1;
     return (0);
+}
+
+void check_tetriminos_sizes(config_t *config)
+{
+    for (tetrimino_t *t = config->tetri_list; t != NULL; t = t->next) {
+        if (t->width > config->map_width || t->height > config->map_height) {
+            t->width = -1;
+            t->height = -1;
+            t->color = -1;
+            t->shape = NULL;
+        }
+    }
 }
