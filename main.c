@@ -18,7 +18,8 @@ int main(int argc, char **argv)
     if (init_config(&config, argc, argv))
         return 84;
     if (config.debug_mode)
-        launch_debug_mode(config);
+        launch_debug_mode(&config);
+    remove_incorrect_tetriminos(&config);
     launch_game(config);
     destroy_tetriminos_list(config.tetri_list);
     return (0);
