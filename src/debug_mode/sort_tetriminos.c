@@ -1,6 +1,7 @@
 /*
 ** EPITECH PROJECT, 2020
 ** tetris
+** File description:
 ** Sorting of the tetriminos chained list (alphabetical order).
 */
 

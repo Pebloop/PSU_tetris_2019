@@ -106,14 +106,16 @@ int config_size(config_t *config);
 int config_level(config_t *config);
 int config_next(config_t *config);
 int config_debug(config_t *config);
+void check_tetriminos_sizes(config_t *config);
 
 /*    DEBUG MODE    */
 
 // debug_mode.c
-void launch_debug_mode(config_t config);
+void launch_debug_mode(config_t *config);
 char *get_key_by_code(int key_code);
-void display_tetriminos_list(tetrimino_t *list, int size);
+void display_tetriminos_list(config_t *config);
 void display_tetrimino_shape(tetrimino_t *tetrimino);
+void remove_incorrect_tetriminos(config_t *config);
 
 // sort_tetriminos.c
 void sort_tetriminos_list(tetrimino_t **list, int size);
