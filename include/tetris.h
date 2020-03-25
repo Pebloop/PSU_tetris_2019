@@ -111,7 +111,7 @@ int config_debug(config_t *config);
 
 // debug_mode.c
 void launch_debug_mode(config_t config);
-char *get_key_by_code(int key_code, char *str);
+char *get_key_by_code(int key_code);
 void display_tetriminos_list(tetrimino_t *list, int size);
 void display_tetrimino_shape(tetrimino_t *tetrimino);
 
