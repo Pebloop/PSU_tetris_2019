@@ -22,5 +22,5 @@ void set_move(game_data_t *gd, config_t config)
     gd->current_move.pos_y = 0;
     gd->current_move.rotation = 0;
     gd->current_move.tetrimino = gd->next;
-    gd->next = rand() % (config.tlist_size + 1);
+    gd->next = rand() % (config.tlist_size);
 }

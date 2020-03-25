@@ -55,7 +55,6 @@ int parse_file(tetrimino_t *tetrimino, char *content)
     tetrimino->color = get_next_nbr(&content, '\n');
     content++;
     if (tetrimino->color < 0 || 15 < tetrimino->color) {
-        free(tetrimino->name);
         return (-1);
     }
     return (get_shape(tetrimino, content));
