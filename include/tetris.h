@@ -88,7 +88,7 @@ int init_config(config_t *config, int argc, char **argv);
 void init_keys_default(config_t *config);
 int init_keys_args(config_t *config, int argc, char **argv);
 void init_long_options(struct option long_options[11], char *names[9]);
-int set_option(config_t *config, int option);
+int set_option(config_t *config, int option, char **argv);
 
 // config_controls.c
 int config_left(config_t *config);
@@ -106,7 +106,11 @@ int config_size(config_t *config);
 int config_level(config_t *config);
 int config_next(config_t *config);
 int config_debug(config_t *config);
+
+// error_detection_config.c
+int is_abbreviation_longopt(int option, char **argv);
 void check_tetriminos_sizes(config_t *config);
+int is_whole_long_opt(char *opt, char *argv);
 
 /*    DEBUG MODE    */
 

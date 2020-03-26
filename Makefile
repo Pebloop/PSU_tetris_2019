@@ -8,6 +8,7 @@ SRC	=	src/display_usage.c					\
 		src/config/config_controls.c		\
 		src/config/config_ui.c				\
 		src/config/config_options.c			\
+		src/config/error_detection_config.c \
 		src/debug_mode/debug_mode.c 		\
 		src/debug_mode/sort_tetriminos.c 	\
 		src/game/game_loop.c				\
