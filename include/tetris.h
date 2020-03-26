@@ -130,7 +130,13 @@ void swap_elements(tetrimino_t **list, int index);
 int launch_game(config_t config);
 
 // game_loop.c
+int display_error_size_screen(config_t *config);
+void manage_input(config_t *config, game_data_t *gd, int input);
+void end_turn(config_t *config, game_data_t *gd);
+void block_data(config_t *config, game_data_t *gd);
 int game_loop(config_t *config, game_data_t *gd);
+
+// player_next_piece.c
 void player_next_piece(config_t *config, game_data_t *gd);
 
 // set_move.c
@@ -146,8 +152,9 @@ void display_next(config_t config, game_data_t *gd);
 // move_tetrimino.c
 void move_left(config_t *config, game_data_t *gd);
 void move_right(config_t *config, game_data_t *gd);
+void move_drop(config_t *config, game_data_t *gd);
 void rotate(config_t *config, game_data_t *gd);
-void game_pause();
+void game_pause(void);
 
 //clock.c
 void clock_init(clockss_t *timer);

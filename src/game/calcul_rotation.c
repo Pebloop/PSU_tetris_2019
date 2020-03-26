@@ -22,7 +22,7 @@ static vector_t calcul_rotation_time(int x, int y, int size)
     vector_t result = {x, y};
 
     result.x = size - y - 1;
-    result.y = x; 
+    result.y = x;
     return result;
 }
 

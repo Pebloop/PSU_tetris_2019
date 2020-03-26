@@ -17,14 +17,14 @@
 #include "ncurses.h"
 #include "game.h"
 
-static lock_piece(tetrimino_t *current,
-    game_data_t *gd, int y, int x)
+static void lock_piece(tetrimino_t *current, game_data_t *gd, int y, int x)
 {
     vector_t pixel = calcul_rotation(current, gd, x, y);
 
-    if (current->shape[y][x])
-        gd->board[gd->current_move.pos_y + pixel.y][gd->current_move.pos_x + pixel.x] =
-            current->color;
+    if (current->shape[y][x]) {
+        gd->board[gd->current_move.pos_y + pixel.y]\
+        [gd->current_move.pos_x + pixel.x] = current->color;
+    }
 }
 
 static int kill_check_line(config_t *config, game_data_t *gd, int y)
