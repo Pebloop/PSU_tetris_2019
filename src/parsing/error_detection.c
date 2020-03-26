@@ -15,7 +15,7 @@ int is_wrong_filename(char *filename)
 
     filename_len = fae_strlen(filename);
     extension_start = filename_len - 10;
-    if (extension_start <= 0)
+    if (extension_start < 0)
         return (1);
     if (fae_strcmp(".tetrimino", &(filename[extension_start])))
         return (1);
