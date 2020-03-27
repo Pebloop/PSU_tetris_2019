@@ -27,7 +27,8 @@ static int try_bloc(config_t config, game_data_t *gd, int x, int y)
     if (gd->current_move.pos_y + pixel.y >= config.map_height
         || gd->current_move.pos_x + pixel.x >= config.map_width
         || gd->current_move.pos_x + pixel.x < 0
-        || gd->board[gd->current_move.pos_y + pixel.y][gd->current_move.pos_x + pixel.x])
+        || gd->board[gd->current_move.pos_y + pixel.y]\
+        [gd->current_move.pos_x + pixel.x])
         return 1;
     return 0;
 }

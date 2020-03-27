@@ -88,7 +88,7 @@ int init_config(config_t *config, int argc, char **argv);
 void init_keys_default(config_t *config);
 int init_keys_args(config_t *config, int argc, char **argv);
 void init_long_options(struct option long_options[11], char *names[9]);
-int set_option(config_t *config, int option);
+int set_option(config_t *config, int option, char **argv);
 
 // config_controls.c
 int config_left(config_t *config);
@@ -106,7 +106,11 @@ int config_size(config_t *config);
 int config_level(config_t *config);
 int config_next(config_t *config);
 int config_debug(config_t *config);
+
+// error_detection_config.c
+int is_abbreviation_longopt(int option, char **argv);
 void check_tetriminos_sizes(config_t *config);
+int is_whole_long_opt(char *opt, char *argv);
 
 /*    DEBUG MODE    */
 
@@ -130,7 +134,13 @@ void swap_elements(tetrimino_t **list, int index);
 int launch_game(config_t config);
 
 // game_loop.c
+int display_error_size_screen(config_t *config);
+void manage_input(config_t *config, game_data_t *gd, int input);
+void end_turn(config_t *config, game_data_t *gd);
+void block_data(config_t *config, game_data_t *gd);
 int game_loop(config_t *config, game_data_t *gd);
+
+// player_next_piece.c
 void player_next_piece(config_t *config, game_data_t *gd);
 
 // set_move.c
@@ -146,8 +156,9 @@ void display_next(config_t config, game_data_t *gd);
 // move_tetrimino.c
 void move_left(config_t *config, game_data_t *gd);
 void move_right(config_t *config, game_data_t *gd);
+void move_drop(config_t *config, game_data_t *gd);
 void rotate(config_t *config, game_data_t *gd);
-void game_pause();
+void game_pause(void);
 
 //clock.c
 void clock_init(clockss_t *timer);

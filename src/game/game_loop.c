@@ -47,7 +47,7 @@ void manage_input(config_t *config, game_data_t *gd, int input)
     (input == config->key.pause) ? game_pause() : 0;
 }
 
-int end_turn(config_t *config, game_data_t *gd)
+void end_turn(config_t *config, game_data_t *gd)
 {
     gd->current_move.pos_y++;
     if (test_collision(*config, gd)) {
@@ -57,7 +57,7 @@ int end_turn(config_t *config, game_data_t *gd)
     clock_init(&(gd->turn));
 }
 
-int block_data(config_t *config, game_data_t *gd)
+void block_data(config_t *config, game_data_t *gd)
 {
     config->level = (config->level > 20) ? 20 : config->level;
     gd->score = (gd->score > 999999) ? 999999 : gd->score;

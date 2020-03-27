@@ -80,7 +80,8 @@ void display_score(config_t config, game_data_t *gd)
     draw_cadran(ox, oy, 24, 8);
     mvprintw(oy + 1, ox + 1, "score : %d", gd->score);
     mvprintw(oy + 2, ox + 1, "high score : %d", gd->highscore);
-    mvprintw(oy + 4, ox + 1, "timer : %d:%02d", clock_get_minute(gd->timer), clock_get_second(gd->timer) % 60);
+    mvprintw(oy + 4, ox + 1, "timer : %d:%02d", clock_get_minute(gd->timer), \
+        clock_get_second(gd->timer) % 60);
     mvprintw(oy + 6, ox + 1, "line : %d", gd->lines);
     mvprintw(oy + 7, ox + 1, "level : %d", config.level);
 }

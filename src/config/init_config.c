@@ -52,13 +52,13 @@ int init_keys_args(config_t *config, int argc, char **argv)
     struct option longopts[11];
     char *optstring = "L:l:r:t:d:q:p:wD";
     char *names[9] = {"level", "key-left", "key-right", "key-turn", "key-drop",
-        "key-quit", "key-payse", "without-next", "debug"};
+        "key-quit", "key-pause", "without-next", "debug"};
     int *idx = NULL;
 
     opterr = 0;
     init_long_options(longopts, names);
     while ((option = getopt_long(argc, argv, optstring, longopts, idx)) != -1) {
-        if (option == '?' || set_option(config, option) == 84)
+        if (option == '?' || set_option(config, option, argv) == 84)
             return (84);
     }
     return (0);
@@ -85,13 +85,15 @@ void init_long_options(struct option long_options[11], char *names[9])
     long_options[10].val = 0;
 }
 
-int set_option(config_t *config, int option)
+int set_option(config_t *config, int option, char **argv)
 {
     char *options = "LlrtdqpswD";
     int (*functions[10])(config_t *) = {config_level, config_left,
         config_right, config_rotate, config_drop, config_quit, config_pause,
         config_size, config_next, config_debug};
 
+    if (is_abbreviation_longopt(option, argv))
+        return (84);
     for (int i = 0; i < 10; i++) {
         if (option == options[i])
             return (functions[i](config));

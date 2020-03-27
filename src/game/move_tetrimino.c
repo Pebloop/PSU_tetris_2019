@@ -51,7 +51,7 @@ void rotate(config_t *config, game_data_t *gd)
     easy_spin_update(gd);
 }
 
-void game_pause()
+void game_pause(void)
 {
     nodelay(stdscr, FALSE);
     getch();
