@@ -166,4 +166,8 @@ int test_collision(config_t config, game_data_t *gd);
 vector_t calcul_rotation(tetrimino_t *current, game_data_t *gd,
     int x, int y);
 
+//high_score.c
+void set_high_score(int score);
+int get_high_score(void);
+
 #endif // DEF_TETRIS

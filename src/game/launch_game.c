@@ -54,6 +54,7 @@ static void game_init(config_t config, game_data_t *gd)
     set_move(gd, config);
     gd->lines = 0;
     gd->score = 0;
+    gd->highscore = get_high_score();
     clock_init(&(gd->timer));
     clock_init(&(gd->turn));
     gd->easy_spin = 0;
@@ -73,5 +74,7 @@ int launch_game(config_t config)
     game_init(config, &gd);
     while (!game_loop(&config, &gd));
     end_curses();
+    if (gd.highscore < gd.score)
+        set_high_score(gd.score);
     return 0;
 }

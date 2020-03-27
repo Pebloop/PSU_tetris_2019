@@ -23,6 +23,7 @@ SRC	=	src/display_usage.c					\
 		src/game/player_next_piece.c		\
 		src/game/easy_spin.c				\
 		src/game/calcul_rotation.c			\
+		src/game/high_score.c				\
 
 MAIN =	main.c
 

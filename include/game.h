@@ -26,6 +26,7 @@ typedef struct game_data {
     int next;
     int lines;
     int score;
+    int highscore;
     clockss_t timer;
     clockss_t turn;
     int easy_spin;
