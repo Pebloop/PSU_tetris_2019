@@ -24,7 +24,7 @@ void launch_debug_mode(config_t *config)
     fae_put("Tetriminos : %d\n", config->tlist_size);
     display_tetriminos_list(config);
     fae_put("Press any key to start Tetris");
-    for (char c = 0; !c; read(0, &c, 1));
+    for (char c[10] = {0}; !(*c); read(0, &c, 10));
 }
 
 char *get_key_by_code(int key_code)
