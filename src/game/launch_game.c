@@ -60,10 +60,13 @@ static void game_init(config_t config, game_data_t *gd)
     gd->easy_spin = 0;
 }
 
-static void end_curses(void)
+static void end_curses(config_t config, game_data_t *gd)
 {
     curs_set(TRUE);
     endwin();
+    for (int i = 0; i < config.map_height; i++)
+        free(gd->board[i]);
+    free(gd->board);
 }
 
 int launch_game(config_t config)
@@ -73,7 +76,7 @@ int launch_game(config_t config)
     start_ncurses();
     game_init(config, &gd);
     while (!game_loop(&config, &gd));
-    end_curses();
+    end_curses(config, &gd);
     if (gd.highscore < gd.score)
         set_high_score(gd.score);
     return 0;
