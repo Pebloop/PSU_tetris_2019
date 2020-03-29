@@ -16,9 +16,8 @@ int init_tetrimino(tetrimino_t **tetriminos, char *content, char *filename)
     for (last = *tetriminos; last->next != NULL; last = last->next);
     if (get_tetrimino_name(last, filename) == 84)
         return (84);
-    if (is_wrong_format(content)) {
+    if (is_wrong_format(content))
         return (-1);
-    }
     return_value = parse_file(last, content);
     if (return_value == 84) {
         free(last->name);
@@ -54,9 +53,8 @@ int parse_file(tetrimino_t *tetrimino, char *content)
     content++;
     tetrimino->color = get_next_nbr(&content, '\n');
     content++;
-    if (tetrimino->color < 0 || 15 < tetrimino->color) {
+    if (tetrimino->color < 0 || 15 < tetrimino->color)
         return (-1);
-    }
     return (get_shape(tetrimino, content));
 }
 
