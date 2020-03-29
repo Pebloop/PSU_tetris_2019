@@ -12,6 +12,9 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <fcntl.h>
+#include <termios.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <getopt.h>
@@ -111,15 +114,16 @@ int config_debug(config_t *config);
 int is_abbreviation_longopt(int option, char **argv);
 void check_tetriminos_sizes(config_t *config);
 int is_whole_long_opt(char *opt, char *argv);
+void remove_incorrect_tetriminos(config_t *config);
 
 /*    DEBUG MODE    */
 
 // debug_mode.c
 void launch_debug_mode(config_t *config);
+void display_keys(config_t *config);
 char *get_key_by_code(int key_code);
 void display_tetriminos_list(config_t *config);
 void display_tetrimino_shape(tetrimino_t *tetrimino);
-void remove_incorrect_tetriminos(config_t *config);
 
 // sort_tetriminos.c
 void sort_tetriminos_list(tetrimino_t **list, int size);

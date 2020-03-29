@@ -47,3 +47,26 @@ int is_whole_long_opt(char *opt, char *argv)
         return (0);
     return (1);
 }
+
+void remove_incorrect_tetriminos(config_t *config)
+{
+    tetrimino_t *prev = NULL;
+    tetrimino_t *copy_t = NULL;
+
+    for (tetrimino_t *t = config->tetri_list; t;) {
+        if (t->shape != NULL) {
+            prev = t;
+            t = t->next;
+            continue;
+        }
+        copy_t = t;
+        if (prev == NULL)
+            config->tetri_list = config->tetri_list->next;
+        else
+            prev->next = t->next;
+        t = t->next;
+        free(copy_t->name);
+        destroy_matrix(copy_t->shape, copy_t->height - 1);
+        free(copy_t);
+    }
+}
