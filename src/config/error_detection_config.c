@@ -5,7 +5,6 @@
 ** Error detection during config of keys, tetriminos, options, etc.
 */
 
-
 #include "fae.h"
 #include "tetris.h"
 
