@@ -67,5 +67,6 @@ fclean: clean
 	make fclean -C lib/fae/
 	make fclean -C lib/list/
 	rm -f $(TEST) $(NAME)
+	rm -f score
 
 re: fclean all
